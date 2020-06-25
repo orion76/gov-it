@@ -1,0 +1,3 @@
+services:
+  ief_table_view.entity_table_renderer:
+    class: \Drupal\ief_table_view\Render\EntityTableRenderer

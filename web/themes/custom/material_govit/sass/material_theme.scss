@@ -1,0 +1,52 @@
+@import '../node_modules/@angular/material/theming';
+@import 'paletts';
+@import 'common';
+@import 'mixins';
+
+$font-family: 'Roboto, "Helvetica Neue", sans-serif';
+$display-4: mat-typography-level(112px, 112px, 300, $letter-spacing: -0.05em);
+$display-3: mat-typography-level(56px, 56px, 400, $letter-spacing: -0.02em);
+$display-2: mat-typography-level(45px, 48px, 400, $letter-spacing: -0.005em);
+$display-1: mat-typography-level(34px, 40px, 400);
+$headline: mat-typography-level(24px, 32px, 400);
+$title: mat-typography-level(20px, 32px, 500);
+$subheading-2: mat-typography-level(16px, 28px, 400);
+$subheading-1: mat-typography-level(15px, 24px, 400);
+$body-2: mat-typography-level(14px, 24px, 500);
+$body-1: mat-typography-level(14px, 20px, 400);
+$caption: mat-typography-level(12px, 20px, 400);
+$button: mat-typography-level(14px, 14px, 500);
+
+// Line-height must be unit-less fraction of the font-size.
+$input: mat-typography-level(inherit, 1.125, 400);
+
+// Include non-theme styles for core.
+$config: mat-typography-config(
+    $font-family,
+    $display-4,
+    $display-3,
+    $display-2,
+    $display-1,
+    $headline,
+    $title,
+    $subheading-2,
+    $subheading-1,
+    $body-2,
+    $body-1,
+    $caption,
+    $button,
+    $input,
+);
+@include mat-core($config);
+
+
+$theme-default-name: 'blue';
+
+
+$theme-default: map-get($themes, $theme-default-name);
+
+$primary: mat-palette(map-get($theme-default, primary));
+$accent: mat-palette(map-get($theme-default, accent));
+$warn: mat-palette(map-get($theme-default, warn));
+@include app-custom-theme($primary, $accent, $warn);
+

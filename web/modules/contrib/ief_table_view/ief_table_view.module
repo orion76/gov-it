@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * IEF Table View module code.
+ */
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\views\Plugin\views\style\StylePluginBase;
+
+/**
+ * Inline Entity Form entity table callback for rendering Views results.
+ *
+ * This was intentionally not implemented as a static function on the service
+ * class so the implementation could be swapped-out. The reference to this
+ * callback is hardcoded, but the underlying implementation can be swapped-out
+ * by altering the service container.
+ *
+ * @param \Drupal\Core\Entity\ContentEntityInterface $entity
+ *   The entity from the View.
+ * @param array $variables
+ *   Table rendering variables, unused.
+ * @param \Drupal\views\Plugin\views\style\StylePluginBase $style
+ *   The style plugin from the View.
+ * @param string $column
+ *   The column within the View that is being rendered.
+ *
+ * @return array
+ *   Renderable array for the field in the table.
+ */
+function ief_table_view_inline_entity_form_entity_table_callback(ContentEntityInterface $entity, array $variables, StylePluginBase $style, $column) {
+  /** @var \Drupal\ief_table_view\Render\EntityTableRenderer $r */
+  $r = \Drupal::service('ief_table_view.entity_table_renderer');
+  return $r->renderEntityColumn($style, $entity, $column);
+}

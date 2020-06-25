@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+// overrided variables
+
+$blue: (
+  50:   #e3f2fd,
+  100:  #bbdefb,
+  200:  #90caf9,
+  300:  #64b5f6,
+  400:  #42a5f5,
+  500:  #2196f3,
+  600:  #1e88e5,
+  700:  #1976d2,
+  800:  #1565c0,
+  900:  #0d47a1,
+  a100: #82b1ff,
+  a200: #448aff,
+  a400: #2979ff,
+  a700: #2962ff
+);
+$red: (
+  50:   #ffebee,
+  100:  #ffcdd2,
+  200:  #ef9a9a,
+  300:  #e57373,
+  400:  #ef5350,
+  500:  #f44336,
+  600:  #e53935,
+  700:  #d32f2f,
+  800:  #c62828,
+  900:  #b71c1c,
+  a100: #ff8a80,
+  a200: #ff5252,
+  a400: #ff1744,
+  a700: #d50000
+);
+
+
+$color-primary-base: #500;
+$color-accent-base: $red;
+$color-primary-base: $blue;

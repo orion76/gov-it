@@ -1,0 +1,108 @@
+@import '../node_modules/@angular/material/theming';
+@import 'variables';
+@import 'common';
+
+@mixin palette-example($theme) {
+  $palette-type: 'light';
+
+  @if map-get($theme, 'is-dark') {
+    $palette-type: 'dark';
+  }
+  @each $palette-name in $palette-names {
+    $palette: map-get($theme, $palette-name);
+
+    @each $color-name in $palette-colors {
+
+      .palette-#{$palette-type}-#{$palette-name}--#{$color-name} {
+        background-color: mat-color($palette, $color-name);
+      }
+    }
+  }
+}
+
+@function theme-set-background($theme) {
+  $primary: map-get($theme, primary);
+
+  $app-bar-color: null;
+  $background-color: null;
+  $card-color: null;
+
+  @if map-get($theme, 'is-dark') {
+    $app-bar-color: darken(mat-color($primary, default), 30);
+    $background-color: darken(mat-color($primary, default), 20);
+    $card-color: darken(mat-color($primary, default), 50);
+
+  } @else {
+    $app-bar-color: lighten(mat-color($primary, default), 30);
+    $background-color: lighten(mat-color($primary, lighter), 60);
+    $card-color: lighten(mat-color($primary, default), 60);
+  }
+  //@debug $background-color;
+  $background: (
+    background:$background-color,
+    app-bar:$app-bar-color,
+    card:$card-color,
+    dialog:$card-color,
+  );
+
+  @return map-merge($theme, (background:$background));
+}
+
+
+@mixin app-custom-theme($primary,$accent,$warn) {
+
+  $dark-theme: mat-dark-theme($primary, $accent, $warn);
+  $light-theme: mat-light-theme($primary, $accent, $warn);
+
+  $dark-theme: theme-set-background($dark-theme);
+  $light-theme: theme-set-background($light-theme);
+
+
+  $background: map-get($light-theme, background);
+  $foreground: map-get($light-theme, foreground);
+
+  //background-color: mat-color($background, background);
+  //color: mat-color($foreground, text);
+
+  @include angular-material-theme($light-theme);
+
+  .theme-dark {
+
+    $background: map-get($dark-theme, background);
+    $foreground: map-get($dark-theme, foreground);
+    //@debug map-get($dark-theme,'is-dark');
+    //@debug $background;
+
+    //background-color: mat-color($background, background);
+    //color: mat-color($foreground, text);
+
+    @include angular-material-theme($dark-theme);
+
+  }
+}
+
+@mixin block-title($size: 2em, $letter-spacing:0.5em) {
+  font-family: $font-alter;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing;
+  font-size: $size;
+  font-weight: 400;
+}
+
+@mixin block-title-position($padding-top: 3em, $padding-bottom:2em,$position:left) {
+  margin-top: 0;
+  padding-top: $padding-top;
+  padding-bottom: $padding-bottom;
+  text-align: $position;
+}
+
+@mixin block-subtitle($size: 1.2em) {
+  font-family: $font-alter;
+  margin-top: 0;
+  position: relative;
+  font-size: $size;
+  font-weight: 300;
+  line-height: 1.2;
+  text-align: center;
+  //opacity: .35;
+}

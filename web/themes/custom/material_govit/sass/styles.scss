@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+
+
+// !!! check path
+//
+// below template for contrib/custom structure:
+// /themes
+//   /contrib
+//     /material_base
+//   /custom
+//     /YOUR_CUSTOM_THEME
+//
+@import "material_theme";
+
+
+// put your styles here
+// you can @extend anything from base theme
