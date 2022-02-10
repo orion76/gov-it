@@ -11,7 +11,7 @@
     "build:dart:sass:4.5.0": "sass --style=expanded scss/style-4-5-0.scss css/style-4-5-0.css"
   },
   "devDependencies": {
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "prettier": "^1.19.1",
     "sass-lint": "^1.13.1"
   },
